@@ -1,21 +1,50 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Sidebar from './components/Sidebar'
-import Main from "./components/Main"
-import { sidebarData } from './data'
+import Main from './components/Main'
+import { callsDetailes } from './data'
+import { handleFilters } from './helper'
 
 function App() {
-  const [filterCalls, setFilterCalls] = useState(sidebarData)
+  const [callsData, setCallsData] = useState(callsDetailes)
 
-  const sidebarConfig = filterCalls.map((item) => {
-    return <Sidebar key={item.id} {...item} />
+  const [filterCalls, setFilterCalls] = useState({
+    callFrom_to: '',
+    by_teams: '',
+    by_agents: '',
+    by_groups: '',
+    by_moments: '',
+    by_callDurtion: '',
+    by_action: '',
   })
+
+  function handleChange(event) {
+    const { name, value } = event.target
+
+    setFilterCalls((prevFilterCalls) => {
+      return {
+        ...prevFilterCalls,
+        [name]: value,
+      }
+    })
+  }
+
+  useEffect(() => {
+    
+    // Check if all filters get target by use helper function
+    setCallsData(handleFilters(filterCalls))
+  }, [filterCalls])
 
   return (
     <div className="py-20 px-12">
       <h1 className="mb-2 text-xl font-medium">enthu.ai</h1>
-      <section className="flex">  
-        <Sidebar  {...filterCalls} />
-        <Main/>
+      <section className="flex">
+        <Sidebar filterCalls={filterCalls} handleChange={handleChange} />
+
+        <Main
+          callsData={callsData}
+          filterCalls={filterCalls}
+          handleChange={handleChange}
+        />
       </section>
     </div>
   )
