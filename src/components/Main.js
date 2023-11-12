@@ -1,25 +1,8 @@
-import React, { useState } from 'react'
-import { tableHead, callsDetailes } from '../data'
+import React from 'react'
+import { tableHead } from '../data'
 
-export default function Main() {
-
-  const [callsData, setCallsData] = useState(callsDetailes)
-
-  const [filterCalls, setFilterCalls] = useState({
-    callFrom_to: '',
-  })
-
-  function handleChange(event) {
-    const { name, value } = event.target
-
-    setFilterCalls((prevFilterCalls) => {
-      return {
-        ...prevFilterCalls,
-        [name]: value,
-      }
-    })
-  }
-
+export default function Main(props) {
+  
   const tableHeader = tableHead.map((item, index) => {
     return (
       <th
@@ -31,7 +14,7 @@ export default function Main() {
     )
   })
 
-  const tableRows = callsData.map((row, rowIndex) => (
+  const tableRows = props.callsData.map((row, rowIndex) => (
     <tr
       key={row.id}
       className={`m-4 flex justify-between ${
@@ -56,9 +39,9 @@ export default function Main() {
       <input
         type="text"
         placeholder="Search by Number (To / From)"
-        onChange={handleChange}
+        onChange={props.handleChange}
         name="callFrom_to"
-        value={filterCalls.callFrom_to}
+        value={props.filterCalls.callFrom_to}
       />
       <table className="w-full  border-collapse">
         <thead>
