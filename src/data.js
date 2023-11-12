@@ -2,38 +2,43 @@ export const sidebarData = [
   {
     id: 1,
     filterBy: 'Teams',
-    filterOptions: ['All', 'team1', 'team2'],
-    isSelected: false,
+    filterOptions: ['All', 'Sales team'],
+    name: 'by_teams',
   },
   {
     id: 2,
     filterBy: 'Agents',
-    filterOptions: ['All', 'team1', 'team2'],
-    isSelected: false,
+    filterOptions: ['All', 'john', 'jane'],
+    name: 'by_agents',
   },
   {
     id: 3,
     filterBy: 'Groups',
-    filterOptions: ['All', 'team1', 'team2'],
-    isSelected: false,
+    filterOptions: ['All'],
+    name: 'by_groups',
   },
   {
     id: 4,
     filterBy: 'Moments',
-    filterOptions: ['All', 'team1', 'team2'],
-    isSelected: false,
+    filterOptions: ['All'],
+    name: 'by_moments',
   },
   {
     id: 5,
-    filterBy: 'Call Duraion',
-    filterOptions: ['All', 'team1', 'team2'],
-    isSelected: false,
+    filterBy: 'Call Type',
+    filterOptions: ['All'],
+    name: 'by_type',
   },
   {
     id: 6,
+    filterBy: 'Call Duraion',
+    name: 'by_callDurtion',
+  },
+  {
+    id: 7,
     filterBy: 'Calls Reviwes',
-    filterOptions: ['All', 'team1', 'team2'],
-    isSelected: false,
+    filterOptions: ['All'],
+    name: 'by_action',
   },
 ]
 
@@ -66,7 +71,7 @@ export const callsDetailes = [
   },
   {
     id: 3,
-    callTiem: 'tesr',
+    callTiem: 'test',
     duration: '...',
     callerType: '....',
     agent: '....',
@@ -91,4 +96,3 @@ export const tableHead = [
   'Script Compliance',
   'Action',
 ]
-
