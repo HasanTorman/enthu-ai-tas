@@ -1,7 +1,7 @@
 import React from 'react'
 import { sidebarData } from '../data'
 
-export default function Sidebar() {
+export default function Sidebar(props) {
   const sidebarConfig = sidebarData.map((item) => {
     return (
       <>
@@ -13,17 +13,17 @@ export default function Sidebar() {
           <select
             className="border rounded-md mt-2"
             id={item.filterBy}
-            name={item.filterBy}
+            name={item.name}
+            value={props.filterCalls[item.name]}
+            onChange={props.handleChange}
           >
-            <option className="text-xs" value="all">
-              all
-            </option>
-            <option className="text-xs" value="op 1">
-              op 1
-            </option>
-            <option className="text-xs" value="op 2">
-              op 2
-            </option>
+            {item.filterOptions.map((row, index) => {
+              return (
+                <option key={index} className="text-xs" value={row}>
+                  {row}
+                </option>
+              )
+            })}
           </select>
         )}
 
