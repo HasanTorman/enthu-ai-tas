@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import Sidebar from './components/Sidebar'
-import Main from './components/Main'
 import { callsDetailes } from './data'
 import { handleFilters } from './helper'
+import Sidebar from './components/Sidebar'
+import Main from './components/Main'
+import CallDetails from './components/CallDetails'
 
 function App() {
   const [callsData, setCallsData] = useState(callsDetailes)
@@ -29,7 +30,6 @@ function App() {
   }
 
   useEffect(() => {
-    
     // Check if all filters get target by use helper function
     setCallsData(handleFilters(filterCalls))
   }, [filterCalls])
@@ -37,6 +37,7 @@ function App() {
   return (
     <div className="py-20 px-12">
       <h1 className="mb-2 text-xl font-medium">enthu.ai</h1>
+
       <section className="flex">
         <Sidebar filterCalls={filterCalls} handleChange={handleChange} />
 
@@ -46,6 +47,9 @@ function App() {
           handleChange={handleChange}
         />
       </section>
+
+      <CallDetails />
+      
     </div>
   )
 }
