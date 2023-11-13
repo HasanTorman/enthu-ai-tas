@@ -7,7 +7,7 @@ export function handleFilters(filterCalls) {
 
   if (filterCalls.callFrom_to) {
     filteredData = filteredData.filter((row) =>
-      row.to_from.includes(filterCalls.callFrom_to),
+      row.from.includes(filterCalls.callFrom_to),
     )
   }
 
@@ -19,8 +19,25 @@ export function handleFilters(filterCalls) {
 
   if (filterCalls.by_agents && filterCalls.by_agents !== 'All') {
     filteredData = filteredData.filter(
-      (row) => row.agent.toLowerCase() === filterCalls.by_agents,
+      (row) => row.agent.toLowerCase() === filterCalls.by_agents.toLowerCase(),
     )
+  }
+
+  if (filterCalls.by_type && filterCalls.by_type !== 'All') {
+    filteredData = filteredData.filter(
+      (row) => row.type === filterCalls.by_type,
+    )
+  }
+
+  if (filterCalls.by_callDurtion) {
+    filteredData = filteredData.filter((row) => {
+      const filterDuration = moment.duration(filterCalls.by_callDurtion)
+
+      return (
+        moment.duration(row.duration).milliseconds() ===
+        filterDuration.milliseconds()
+      )
+    })
   }
 
   return filteredData
@@ -50,7 +67,6 @@ function categorizeDataByWeek() {
 
   return weekCategorize
 }
-
 
 // this function to get average duration for each week
 export function getAverageCallDuration() {

@@ -7,8 +7,6 @@ import Main from './components/Main'
 import CallDetails from './components/CallDetails'
 import Charts from './components/Charts'
 function App() {
-  // sort callsDetailes array by date
-
   const [callsData, setCallsData] = useState(callsDetailes)
 
   const [filterCalls, setFilterCalls] = useState({
@@ -20,6 +18,7 @@ function App() {
     by_callDurtion: '',
     by_action: '',
     by_date: '',
+    by_type: '',
   })
 
   function handleChange(event) {

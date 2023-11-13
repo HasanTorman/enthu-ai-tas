@@ -1,7 +1,6 @@
 import audio_1 from './assets/sounds/sound-1.mp3'
 import audio_2 from './assets/sounds/sound-2.mp3'
 import audio_3 from './assets/sounds/sound-3.mp3'
-import phoneIcon from './assets/images/phone_forwarded_FILL0_wght400_GRAD0_opsz24.png'
 import moment from 'moment/moment'
 
 export const sidebarData = [
@@ -14,7 +13,7 @@ export const sidebarData = [
   {
     id: 2,
     filterBy: 'Agents',
-    filterOptions: ['All', 'john', 'jane'],
+    filterOptions: ['All', 'John', 'Jean' , "Adam"],
     name: 'by_agents',
   },
   {
@@ -32,7 +31,7 @@ export const sidebarData = [
   {
     id: 5,
     filterBy: 'Call Type',
-    filterOptions: ['All'],
+    filterOptions: ['All', 'Inbound', 'Outbound'],
     name: 'by_type',
   },
   {
@@ -56,9 +55,9 @@ const callsData = [
     callerType: 'NA',
     agent: 'John',
     team: 'Sales team',
-    from: '078888888',
+    from: '078999',
     to: '079999999',
-    type: { phoneIcon },
+    type: 'Inbound',
     moments: '1 15',
     scriptComp: '17%',
     action: 'reviewed',
@@ -73,7 +72,7 @@ const callsData = [
     team: 'Sales team',
     from: '078888888',
     to: '0799999999',
-    type: { phoneIcon },
+    type: 'Outbound',
     moments: '....',
     scriptComp: '19%',
     action: 'reviewed',
@@ -88,7 +87,7 @@ const callsData = [
     team: 'Sales team',
     from: '078888888',
     to: '079999999',
-    type: { phoneIcon },
+    type: 'Inbound',
     moments: '....',
     scriptComp: '20%',
     action: 'reviewed',
