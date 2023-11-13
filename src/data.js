@@ -1,3 +1,7 @@
+import audio_1 from './assets/sounds/sound-1.mp3'
+import audio_2 from './assets/sounds/sound-2.mp3'
+import audio_3 from './assets/sounds/sound-3.mp3'
+
 export const sidebarData = [
   {
     id: 1,
@@ -45,42 +49,48 @@ export const sidebarData = [
 export const callsDetailes = [
   {
     id: 1,
-    callTiem: '28 Jan 2021 02:29 PM',
+    callTime: '28 Jan 2021 - 02:29 PM',
     duration: '00:31',
     callerType: 'NA',
     agent: 'John',
     team: 'Sales team',
-    to_from: 'jone due',
+    from: '078888888',
+    to: '079999999',
     type: 'icon',
     moments: '1 15',
     scriptComp: '17%',
     action: 'reviewed',
+    callTrack: { audio_1 },
   },
   {
     id: 2,
-    callTiem: '.....',
+    callTime: '28 Jan 2021 - 02:29 PM',
     duration: '...',
     callerType: '....',
     agent: '....',
     team: '....',
-    to_from: '.....',
+    from: '078888888',
+    to: '0799999999',
     type: '....',
     moments: '....',
     scriptComp: '...',
     action: '....',
+    callTrack: { audio_2 },
   },
   {
     id: 3,
-    callTiem: 'test',
+    callTime: 'test',
     duration: '...',
     callerType: '....',
     agent: '....',
     team: '....',
-    to_from: '.....',
+    from: '078888888',
+    to: '079999999',
     type: '....',
     moments: '....',
     scriptComp: '...',
     action: '....',
+    callTrack: { audio_3 },
   },
 ]
 
