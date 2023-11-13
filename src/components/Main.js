@@ -23,7 +23,7 @@ export default function Main(props) {
       >
         <td>{row.callTime}</td>
         <td>{row.duration}</td>
-        <td>{row.callerType}</td>
+        <td><span className='bg-blue-200 p-1'>{row.callerType}</span></td>
         <td>{row.agent}</td>
         <td>{row.team}</td>
         <td>
