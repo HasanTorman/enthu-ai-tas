@@ -5,8 +5,10 @@ import { handleFilters } from './helper'
 import Sidebar from './components/Sidebar'
 import Main from './components/Main'
 import CallDetails from './components/CallDetails'
-
+import Charts from './components/Charts'
 function App() {
+  // sort callsDetailes array by date
+
   const [callsData, setCallsData] = useState(callsDetailes)
 
   const [filterCalls, setFilterCalls] = useState({
@@ -17,6 +19,7 @@ function App() {
     by_moments: '',
     by_callDurtion: '',
     by_action: '',
+    by_date: '',
   })
 
   function handleChange(event) {
@@ -36,7 +39,7 @@ function App() {
   }, [filterCalls])
 
   return (
-    <div className="py-20 px-12">
+    <div className="py-20 px-12 w-full h-full">
       <h1 className="mb-2 text-xl font-medium">enthu.ai</h1>
 
       <Routes>
@@ -55,6 +58,7 @@ function App() {
         />
 
         <Route path="/call/:id" element={<CallDetails />} />
+        <Route path="/statistics" element={<Charts />} />
       </Routes>
     </div>
   )
