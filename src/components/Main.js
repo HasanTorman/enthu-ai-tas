@@ -30,7 +30,7 @@ export default function Main(props) {
         <td>
           {row.from} / {row.to}
         </td>
-        <td>{row.type}</td>
+        <td> <img src={row.type.phoneIcon} alt="phoneIcon"/></td>
         <td>{row.moments}</td>
         <td>{row.scriptComp}</td>
         <td>{row.action}</td>
