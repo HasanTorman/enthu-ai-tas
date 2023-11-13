@@ -1,9 +1,8 @@
+import moment from 'moment'
 import { callsDetailes } from './data'
 
+//  check if filterCalls object have any selected data to filter main call data state
 export function handleFilters(filterCalls) {
-    
-  //  check if filterCalls object have any selected data to filter main call data state
-
   let filteredData = callsDetailes
 
   if (filterCalls.callFrom_to) {
@@ -25,4 +24,53 @@ export function handleFilters(filterCalls) {
   }
 
   return filteredData
+}
+
+// this function to categorize calls by week
+function categorizeDataByWeek() {
+  let weekCategorize = {}
+  const currentMonth = moment().month()
+  const currentWeek = moment().isoWeek()
+  callsDetailes.forEach((call) => {
+    const callWeek = moment(call.callTime).isoWeek()
+
+    if (currentMonth === moment(call.callTime).month()) {
+      if (currentWeek === callWeek) {
+        if (!weekCategorize[callWeek]) {
+          weekCategorize[callWeek] = []
+          weekCategorize[callWeek].push(call)
+        }
+      }
+    }
+  })
+
+  if (Object.keys(weekCategorize).length > 4) {
+    weekCategorize = {}
+  }
+
+  return weekCategorize
+}
+
+
+// this function to get average duration for each week
+export function getAverageCallDuration() {
+  const weeksCallsData = categorizeDataByWeek()
+  const averageDurations = []
+
+  for (const key in weeksCallsData) {
+    const callsPerWeek = weeksCallsData[key]
+
+    const totalDuration = callsPerWeek.reduce((acc, call) => {
+      return acc.add(moment.duration(call.duration))
+    }, moment.duration(0))
+
+    const averageDuration = moment.utc(totalDuration / callsPerWeek.length)
+
+    averageDurations.push({
+      week: key,
+      average: averageDuration.format('mm:ss'),
+    })
+  }
+
+  return averageDurations
 }
