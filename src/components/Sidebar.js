@@ -28,14 +28,28 @@ export default function Sidebar(props) {
         )}
 
         {item.filterBy === 'Call Duraion' && (
-          <input className="mt-2" type="range" min="0" max="60" />
+          <div>
+            <input
+              className="mt-2 w-full"
+              type="range"
+              name={item.name}
+              min="0"
+              max="60"
+              value={props.filterCalls[item.name]}
+              onChange={props.handleChange}
+            />
+            <div className="flex justify-between text-xs text-gray-500">
+              <span>0</span>
+              <span>60</span>
+            </div>
+          </div>
         )}
       </>
     )
   })
 
   return (
-    <aside className="px-9 py-1 mt-4 flex flex-col bg-white w-1/12 min-w-fit">
+    <aside className="px-9 py-1 mt-4 flex flex-col bg-white w-2/12 min-w-fit">
       <h3 className="text-sm font-semibold">Group: All</h3>
       {sidebarConfig}
     </aside>
