@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
 import { callsDetailes } from './data'
 import { handleFilters } from './helper'
 import Sidebar from './components/Sidebar'
@@ -38,18 +39,23 @@ function App() {
     <div className="py-20 px-12">
       <h1 className="mb-2 text-xl font-medium">enthu.ai</h1>
 
-      <section className="flex">
-        <Sidebar filterCalls={filterCalls} handleChange={handleChange} />
-
-        <Main
-          callsData={callsData}
-          filterCalls={filterCalls}
-          handleChange={handleChange}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <section className="flex">
+              <Sidebar filterCalls={filterCalls} handleChange={handleChange} />
+              <Main
+                callsData={callsData}
+                filterCalls={filterCalls}
+                handleChange={handleChange}
+              />
+            </section>
+          }
         />
-      </section>
 
-      <CallDetails />
-      
+        <Route path="/call/:id" element={<CallDetails />} />
+      </Routes>
     </div>
   )
 }
