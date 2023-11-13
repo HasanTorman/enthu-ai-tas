@@ -1,6 +1,8 @@
 import audio_1 from './assets/sounds/sound-1.mp3'
 import audio_2 from './assets/sounds/sound-2.mp3'
 import audio_3 from './assets/sounds/sound-3.mp3'
+import phoneIcon from './assets/images/phone_forwarded_FILL0_wght400_GRAD0_opsz24.png'
+import moment from 'moment/moment'
 
 export const sidebarData = [
   {
@@ -46,17 +48,17 @@ export const sidebarData = [
   },
 ]
 
-export const callsDetailes = [
+const callsData = [
   {
     id: 1,
-    callTime: '28 Jan 2021 - 02:29 PM',
+    callTime: '13 Jan 2023 , 05:43 pm',
     duration: '00:31',
     callerType: 'NA',
     agent: 'John',
     team: 'Sales team',
     from: '078888888',
     to: '079999999',
-    type: 'icon',
+    type: { phoneIcon },
     moments: '1 15',
     scriptComp: '17%',
     action: 'reviewed',
@@ -64,35 +66,40 @@ export const callsDetailes = [
   },
   {
     id: 2,
-    callTime: '28 Jan 2021 - 02:29 PM',
-    duration: '...',
-    callerType: '....',
-    agent: '....',
-    team: '....',
+    callTime: '14 Nov 2023 , 05:43 pm',
+    duration: '00:40',
+    callerType: 'NA',
+    agent: 'Jean',
+    team: 'Sales team',
     from: '078888888',
     to: '0799999999',
-    type: '....',
+    type: { phoneIcon },
     moments: '....',
-    scriptComp: '...',
-    action: '....',
+    scriptComp: '19%',
+    action: 'reviewed',
     callTrack: { audio_2 },
   },
   {
     id: 3,
-    callTime: 'test',
-    duration: '...',
-    callerType: '....',
-    agent: '....',
-    team: '....',
+    callTime: '10 Nov 2023 , 05:43 pm',
+    duration: '01.30',
+    callerType: 'NA',
+    agent: 'Adam',
+    team: 'Sales team',
     from: '078888888',
     to: '079999999',
-    type: '....',
+    type: { phoneIcon },
     moments: '....',
-    scriptComp: '...',
-    action: '....',
+    scriptComp: '20%',
+    action: 'reviewed',
     callTrack: { audio_3 },
   },
 ]
+
+// sort calls by date
+export const callsDetailes = callsData.sort(
+  (a, b) => moment(a.callTime) - moment(b.callTime),
+)
 
 export const tableHead = [
   'Call date/time',

@@ -9,7 +9,7 @@ import timeIcon from '../assets/images/schedule_FILL0_wght400_GRAD0_opsz24.png'
 export default function CallDetails() {
   const { id } = useParams()
   const [callDetails, setCallDetails] = useState(getCallById())
-  const [date, time] = callsDetailes[0].callTime.split('-')
+  const [date, time] = callsDetailes[0].callTime.split(',')
 
   function getCallById() {
     return callsDetailes.filter((call) => call.id === +id)
