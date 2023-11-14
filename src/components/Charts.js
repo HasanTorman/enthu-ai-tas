@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { callsDetailes } from '../data'
 
 import {
   BarChart,
@@ -9,66 +10,95 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  LineChart,
+  Line,
 } from 'recharts'
 
-import { getAverageCallDuration } from '../helper'
+import { getAverageCallDuration, getCallById } from '../helper'
+import { useParams } from 'react-router-dom'
 
 export default function Charts() {
   const [avergeDuration, setAvergeDuration] = useState(getAverageCallDuration())
+  const { id } = useParams()
+
+  const callByAgent = getCallById(id)
+  const teamEvaluation = callsDetailes.map((call) => {
+    return {
+      evaluation: call.evaluation,
+    }
+  })
+
+  const dataAgentEvaluation = teamEvaluation.map((agent, index) => {
+    return {
+      name: `Wk.${index + 1}`,
+      uv: agent.evaluation,
+      pv: callByAgent[0].evaluation,
+    }
+  })
+
   const data = [
     {
       name: 'Week 1',
-      uv: 2400,
       pv: avergeDuration[0].average,
+      uv: callByAgent[0].evaluation,
+
       amt: 2400,
     },
     {
       name: 'Week 2',
-      uv: 1390,
       pv: avergeDuration[1]?.average,
+      uv: callByAgent[0].evaluation,
+
       amt: 2210,
     },
     {
       name: 'Week 3',
-      uv: 9800,
       pv: avergeDuration[2]?.average,
+      uv: callByAgent[0].evaluation,
+
       amt: 2290,
     },
     {
       name: 'Week 4',
-      uv: 3900,
       pv: avergeDuration[3]?.average,
+      uv: callByAgent[0].evaluation,
       amt: 2000,
     },
   ]
 
   return (
-    <div className="mt-28">
-      <ResponsiveContainer width="40%" height="30%">
-        <BarChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-          barSize={20}
-        >
-          <XAxis
-            dataKey="name"
-            scale="point"
-            padding={{ left: 10, right: 10 }}
-          />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <CartesianGrid strokeDasharray="3 3" />
-          <Bar dataKey="pv" fill="#8884d8" background={{ fill: '#eee' }} />
-        </BarChart>
-      </ResponsiveContainer>
+    <div className="mt-28 flex justify-between">
+      <BarChart width={600} height={450} data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar
+          dataKey={`Agerage Call duration : ${callByAgent[0].agent}`}
+          fill="#8884d8"
+        />
+        <Bar dataKey="Agerage Call duration Team " fill="#82ca9d" />
+      </BarChart>
+
+      <LineChart
+        width={600}
+        height={450}
+        data={dataAgentEvaluation}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line
+          type="monotone"
+          dataKey={`QA score of ${callByAgent[0].agent}`}
+          stroke="#8884d8"
+        />
+        <Line type="monotone" dataKey="QA score of Team" stroke="#82ca9d" />
+      </LineChart>
     </div>
   )
 }
