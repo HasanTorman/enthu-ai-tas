@@ -90,3 +90,7 @@ export function getAverageCallDuration() {
 
   return averageDurations
 }
+
+export function getCallById(id) {
+ return callsDetailes.filter((call) => call.id === +id)
+}
