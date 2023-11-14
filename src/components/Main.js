@@ -18,8 +18,8 @@ export default function Main(props) {
       <tr
         key={row.id}
         className={`py-2 px-1 flex justify-between items-center text-center ${
-          rowIndex % 2 === 0 ? 'bg-gray-200' : ''
-        } text-sm `}
+          rowIndex % 2 === 0 ? 'bg-gray-100' : ''
+        } text-sm text-gray-500 `}
       >
         <td>{row.callTime}</td>
         <td>{row.duration}</td>
@@ -57,7 +57,7 @@ export default function Main(props) {
         onChange={props.handleChange}
         name="callFrom_to"
         value={props.filterCalls.callFrom_to}
-        className="w-4/12 ml-6"
+        className="w-2/12 m-6"
       />
       <table className="w-full border-collapse">
         <thead className="w-full">

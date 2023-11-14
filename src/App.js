@@ -39,7 +39,11 @@ function App() {
 
   return (
     <div className="py-20 px-12 w-full h-full">
-      <h1 className="mb-2 text-xl font-medium">enthu.ai</h1>
+      <section className="flex">
+        <h1 className="mb-2 text-xl font-medium flex-auto">enthu.ai</h1>
+
+
+      </section>
 
       <Routes>
         <Route
@@ -57,7 +61,7 @@ function App() {
         />
 
         <Route path="/call/:id" element={<CallDetails />} />
-        <Route path="/statistics" element={<Charts />} />
+        <Route path="/call/:id/statistics" element={<Charts />} />
       </Routes>
     </div>
   )
