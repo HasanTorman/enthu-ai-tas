@@ -44,7 +44,7 @@ export function handleFilters(filterCalls) {
 }
 
 // this function to categorize calls by week
-function categorizeDataByWeek() {
+export function categorizeDataByWeek() {
   let weekCategorize = {}
   const currentMonth = moment().month()
   const currentWeek = moment().isoWeek()
@@ -55,8 +55,8 @@ function categorizeDataByWeek() {
       if (currentWeek === callWeek) {
         if (!weekCategorize[callWeek]) {
           weekCategorize[callWeek] = []
-          weekCategorize[callWeek].push(call)
         }
+        weekCategorize[callWeek].push(call)
       }
     }
   })
@@ -80,7 +80,7 @@ export function getAverageCallDuration() {
       return acc.add(moment.duration(call.duration))
     }, moment.duration(0))
 
-    const averageDuration = moment.utc(totalDuration / callsPerWeek.length)
+    const averageDuration = moment(totalDuration / callsPerWeek.length)
 
     averageDurations.push({
       week: key,
@@ -91,6 +91,29 @@ export function getAverageCallDuration() {
   return averageDurations
 }
 
+export function getAverageEvaluation() {
+  const weeksCallsData = categorizeDataByWeek()
+  const averageEvaluation = []
+
+  for (const key in weeksCallsData) {
+    const callsPerWeek = weeksCallsData[key]
+
+    const totalEvaluuation = callsPerWeek.reduce((acc, call) => {
+      return acc + call.evaluation
+    }, 0)
+
+    const average = totalEvaluuation / callsPerWeek.length
+
+    averageEvaluation.push({
+      week: key,
+      average: average,
+    })
+  }
+
+  return averageEvaluation
+}
+
+console.log(getAverageEvaluation());
 export function getCallById(id) {
- return callsDetailes.filter((call) => call.id === +id)
+  return callsDetailes.filter((call) => call.id === +id)
 }
