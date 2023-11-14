@@ -62,11 +62,12 @@ const callsData = [
     scriptComp: '17%',
     action: 'reviewed',
     callTrack: { audio_1 },
+    evaluation : 0.65
   },
   {
     id: 2,
     callTime: '14 Nov 2023 , 05:43 pm',
-    duration: '00:40',
+    duration: '01:55',
     callerType: 'NA',
     agent: 'Jean',
     team: 'Sales team',
@@ -77,6 +78,8 @@ const callsData = [
     scriptComp: '19%',
     action: 'reviewed',
     callTrack: { audio_2 },
+    evaluation : 0.70
+
   },
   {
     id: 3,
@@ -92,6 +95,8 @@ const callsData = [
     scriptComp: '20%',
     action: 'reviewed',
     callTrack: { audio_3 },
+    evaluation : 0.80
+
   },
 ]
 
