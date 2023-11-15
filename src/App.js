@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar'
 import Main from './components/Main'
 import CallDetails from './components/CallDetails'
 import Charts from './components/Charts'
+import Header from './components/Header'
 function App() {
   const [callsData, setCallsData] = useState(callsDetailes)
 
@@ -39,12 +40,7 @@ function App() {
 
   return (
     <div className="py-20 px-12 w-full h-full">
-      <section className="flex">
-        <h1 className="mb-2 text-xl font-medium flex-auto">enthu.ai</h1>
-
-
-      </section>
-
+      <Header />
       <Routes>
         <Route
           path="/"
