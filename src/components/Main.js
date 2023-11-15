@@ -50,14 +50,14 @@ export default function Main(props) {
   ))
 
   return (
-    <div className="mx-9 py-24 w-10/12">
+    <div className="mx-6 mt-20 w-10/12 bg-white">
       <input
         type="text"
         placeholder="Search by Number (To / From)"
         onChange={props.handleChange}
         name="callFrom_to"
         value={props.filterCalls.callFrom_to}
-        className="w-2/12 m-6"
+        className="w-2/12 mb-8"
       />
       <table className="w-full border-collapse">
         <thead className="w-full">

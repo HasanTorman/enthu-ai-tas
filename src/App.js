@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { callsDetailes } from './data'
 import { handleFilters } from './helper'
-import Sidebar from './components/Sidebar'
+import Filter from './components/Filter'
 import Main from './components/Main'
 import CallDetails from './components/CallDetails'
 import Charts from './components/Charts'
 import Header from './components/Header'
+import Sidebar from './components/Sidebar'
+
 function App() {
   const [callsData, setCallsData] = useState(callsDetailes)
 
@@ -39,14 +41,18 @@ function App() {
   }, [filterCalls])
 
   return (
-    <div className="py-20 px-12 w-full h-full">
-      <Header />
+    <div className="w-full pt-20 h-full relative">
+      <section className="w-full flex justify-center absolute">
+        <Sidebar />
+        <Header />
+      </section>
+
       <Routes>
         <Route
           path="/"
           element={
-            <section className="flex">
-              <Sidebar filterCalls={filterCalls} handleChange={handleChange} />
+            <section className="flex p-16">
+              <Filter filterCalls={filterCalls} handleChange={handleChange} />
               <Main
                 callsData={callsData}
                 filterCalls={filterCalls}

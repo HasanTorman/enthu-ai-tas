@@ -113,7 +113,6 @@ export function getAverageEvaluation() {
   return averageEvaluation
 }
 
-console.log(getAverageEvaluation());
 export function getCallById(id) {
   return callsDetailes.filter((call) => call.id === +id)
 }

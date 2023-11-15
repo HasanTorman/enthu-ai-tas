@@ -7,9 +7,20 @@
 }
 
 body {
-  background-color: #f9fafb;
+  background-color: #f3f4f7;
+  font-family: karla;
 }
 
 td {
   width: 5rem;
+}
+
+.sidebar--icon {
+  width: 18px;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.active {
+  flood-color: blueviolet;
 }

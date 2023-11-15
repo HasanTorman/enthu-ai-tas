@@ -49,7 +49,7 @@ export default function Charts() {
 
   
   return (
-    <div className="mt-28 flex justify-between">
+    <div className="mt-28 p-16 flex justify-between">
       <BarChart width={600} height={450} data={dataAgentDuration}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
