@@ -47,17 +47,14 @@ export function handleFilters(filterCalls) {
 export function categorizeDataByWeek() {
   let weekCategorize = {}
   const currentMonth = moment().month()
-  const currentWeek = moment().isoWeek()
   callsDetailes.forEach((call) => {
     const callWeek = moment(call.callTime).isoWeek()
 
     if (currentMonth === moment(call.callTime).month()) {
-      if (currentWeek === callWeek) {
-        if (!weekCategorize[callWeek]) {
-          weekCategorize[callWeek] = []
-        }
-        weekCategorize[callWeek].push(call)
+      if (!weekCategorize[callWeek]) {
+        weekCategorize[callWeek] = []
       }
+      weekCategorize[callWeek].push(call)
     }
   })
 
@@ -77,19 +74,20 @@ export function getAverageCallDuration() {
     const callsPerWeek = weeksCallsData[key]
 
     const totalDuration = callsPerWeek.reduce((acc, call) => {
-      return acc.add(moment.duration(call.duration))
-    }, moment.duration(0))
+      return acc + moment.duration(call.duration).asMinutes()
+    }, 0)
 
-    const averageDuration = moment(totalDuration / callsPerWeek.length)
+    const averageDuration = totalDuration / callsPerWeek.length
 
     averageDurations.push({
       week: key,
-      average: averageDuration.format('mm:ss'),
+      average: averageDuration.toFixed(4),
     })
   }
 
   return averageDurations
 }
+console.log(getAverageCallDuration())
 
 export function getAverageEvaluation() {
   const weeksCallsData = categorizeDataByWeek()

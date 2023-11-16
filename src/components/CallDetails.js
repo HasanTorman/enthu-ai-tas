@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 import { callsDetailes } from '../data'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import phoneIcon from '../assets/images/phone_forwarded_FILL0_wght400_GRAD0_opsz24.png'
 import calenderIcon from '../assets/images/calendar_today_FILL0_wght400_GRAD0_opsz24.png'
 import timeIcon from '../assets/images/schedule_FILL0_wght400_GRAD0_opsz24.png'
@@ -16,8 +16,8 @@ export default function CallDetails() {
 
   return (
     <div className="p-16 h-full flex ">
-      <div className='flex flex-col w-9/12'>
-        <div className="w-full border-2 rounded-sm shadow-xl">
+      <div className="flex flex-col w-9/12">
+        <div className="w-full border-2 rounded-sm shadow-x bg-white ">
           <div className="flex p-3">
             <img className="mr-3 h-6  " src={phoneIcon} alt="phoneIcon" />
             <h4 className="mr-3">{callDetails[0].agent}</h4>
@@ -36,19 +36,12 @@ export default function CallDetails() {
             className="w-full"
           />
         </div>
-        <CallMoment callDetails={callDetails} />
+        <CallMoment callDetails={callDetails} id={id} />
       </div>
 
-      <div className='w-3/12'>
+      <div className="w-3/12">
         <ChatCall />
       </div>
-      {/* <div className="w-5">
-        <Link to={`/call/${id}/statistics`}>
-          <button className="p-2 bg-blue-600 flex items-center justify-center text-white rounded-lg font-medium text-sm">
-            Charts
-          </button>
-        </Link>
-      </div> */}
     </div>
   )
 }

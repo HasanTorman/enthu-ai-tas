@@ -49,9 +49,9 @@ export default function Filter(props) {
   })
 
   return (
-    <aside className="px-9 bg-white w-2/12 min-w-fit">
+    <aside className="px-12 py-1 bg-white w-2/12 min-w-fit">
       <div className="flex flex-col">
-        <h3 className="text-sm font-semibold">Group: All</h3>
+        <h3 className="text-lg text-gray-500 font-semibold tracking-tighter">Group: All</h3>
         {filterConfig}
       </div>
     </aside>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-export default function CallMoment({ callDetails }) {
+export default function CallMoment({ callDetails, id }) {
   const [isClicked, setIsClicked] = useState(false)
 
   function handleClick(text) {
@@ -15,8 +16,7 @@ export default function CallMoment({ callDetails }) {
     return (
       <div
         key={call.id}
-        className="flex justify-between 	
-      text-gray-400 text-sm pt-5 font-semibold border-b-2 border-t-2 pb-12 "
+        className="flex text-gray-400 text-sm pt-5 pb-12 px-10 font-semibold border-b-2 border-t-2 gap-x-72"
       >
         <h5>{call.moments.split(' ')[0]}</h5>
         <h5>Features</h5>
@@ -27,9 +27,9 @@ export default function CallMoment({ callDetails }) {
   })
 
   return (
-    <div className="p-6 w-full border-2 rounded-sm shadow-xl mt-2">
+    <div className="p-6 w-full border-2 rounded-sm shadow-xl mt-2 bg-white ">
       <div className="flex text-center text-sm py-2">
-        <div className="flex flex-auto gap-x-10 font-semibold">
+        <div className="flex flex-auto  font-semibold ">
           <h4
             onClick={() => handleClick('Moments')}
             className={`${
@@ -54,12 +54,14 @@ export default function CallMoment({ callDetails }) {
           >
             Add to Playlist
           </button>
-          <button
-            className="bg-blue-700  items-center  flex text-white rounded px-2 py-1 "
-            type=""
-          >
-            Transcript
-          </button>
+          <Link to={`/call/${id}/statistics`}>
+            <button
+              className="bg-blue-700  items-center  flex text-white rounded px-2 py-1 "
+              type=""
+            >
+              Statistics
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -69,7 +71,7 @@ export default function CallMoment({ callDetails }) {
           <h2 className="text-base font-semibold text-gray-500 tracking-tighter">
             Commercials
           </h2>
-          <table className="w-full flex flex-col w-5/6">
+          <table className="w-full flex flex-col w-3/4">
             <thead className="text-left text-sm text-blue-700 flex justify-between items-center py-1">
               <th>#</th>
               <th>Moment Name</th>

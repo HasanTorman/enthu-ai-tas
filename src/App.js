@@ -41,8 +41,8 @@ function App() {
   }, [filterCalls])
 
   return (
-    <div className="w-full pt-20 h-full relative">
-      <section className="w-full flex justify-center absolute">
+    <div className="w-full  h-full relative ">
+      <section className="w-full flex justify-center">
         <Sidebar />
         <Header />
       </section>
@@ -51,7 +51,7 @@ function App() {
         <Route
           path="/"
           element={
-            <section className="flex p-16">
+            <section className="flex w-full pl-16 ml-4">
               <Filter filterCalls={filterCalls} handleChange={handleChange} />
               <Main
                 callsData={callsData}

@@ -17,9 +17,9 @@ export default function ChatCall() {
     return (
       <div
         key={chat.id}
-        className={`${isShow ? 'px-6 py-6 flex flex-col text-sm' : 'hidden'} `}
+        className={`${isShow ? 'w-full px-6 py-6 grid grid-cols-2 grid-rows-2 text-sm' : 'hidden'} `}
       >
-        <div className="flex flex-col items-end justify-center bg-gray-300 h-16 rounded-br-xl px-2">
+        <div className=" w-full col-start-2 col-end-2 flex flex-col items-end justify-center bg-gray-300 h-16 rounded-br-xl px-2">
           <p className="font-semibold">client</p>
           <p> {chat.client}</p>
         </div>
@@ -33,7 +33,7 @@ export default function ChatCall() {
 
   return (
     <div>
-      <div className="flex w-full justify-end items-center py-5 px-1 border-2">
+      <div className="flex w-full justify-end items-center py-5 px-1 border-2 bg-white">
         <svg
           onClick={handleExpandedLessClick}
           className="cursor-pointer"
